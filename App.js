@@ -13,7 +13,7 @@ const Drawer = createDrawerNavigator();
 const App = () => {
   return (
     <NavigationContainer>
-      <Drawer.Navigator initialRouteName='Home'
+      <Drawer.Navigator initialRouteName='Homes'
         drawerContent={props => <DrawerContent {...props} />}
         screenOptions={{
           headerStyle: {
@@ -24,7 +24,7 @@ const App = () => {
             fontWeight: 'bold'
           }
         }}>
-        <Drawer.Screen name='Home' component={MainTabScreen} />
+        <Drawer.Screen name='Homes' component={MainTabScreen} />
         <Drawer.Screen name='Support' component={SupportScreen} />
         <Drawer.Screen name='Setting' component={SettingScreen} />
         <Drawer.Screen name='Bookmark' component={BookmarkScreen} />

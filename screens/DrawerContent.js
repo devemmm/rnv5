@@ -1,5 +1,5 @@
-import React, { useState} from 'react'
-import { View, StyleSheet } from 'react-native'
+import React, { useEffect, useState } from 'react'
+import { View, StyleSheet, Appearance } from 'react-native'
 import { Avatar, Title, Caption, Paragraph, Drawer, Text, TouchableRipple, Switch } from "react-native-paper"
 import { DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer"
 import Icon from "react-native-vector-icons/MaterialCommunityIcons"
@@ -9,9 +9,20 @@ export const DrawerContent = (props) => {
 
     const [isDarkTheme, setIsDarkTheme] = useState(false)
 
-    const toggleTheme = ()=>{
+    const toggleTheme = () => {
         setIsDarkTheme(!isDarkTheme)
     }
+
+    useEffect(() => {
+        const colorScheme = Appearance.getColorScheme();
+        if (colorScheme === 'dark') {
+            setIsDarkTheme(true)
+        }
+
+        if (colorScheme === 'light') {
+            setIsDarkTheme(false)
+        }
+    }, [])
 
     return (
         <View style={{ flex: 1 }}>
@@ -61,7 +72,7 @@ export const DrawerContent = (props) => {
                                 size = { size }
                             }}
                             label="Profile"
-                            onPress={() => {props.navigation.navigate("Profile")}}
+                            onPress={() => { props.navigation.navigate("Profile") }}
                         />
 
                         <DrawerItem
@@ -71,7 +82,7 @@ export const DrawerContent = (props) => {
                                 size = { size }
                             }}
                             label="Bookmarks"
-                            onPress={() => { props.navigation.navigate("Bookmark")}}
+                            onPress={() => { props.navigation.navigate("Bookmark") }}
                         />
 
                         <DrawerItem
@@ -91,13 +102,13 @@ export const DrawerContent = (props) => {
                                 size = { size }
                             }}
                             label="Support"
-                            onPress={() => { props.navigation.navigate("Support")}}
+                            onPress={() => { props.navigation.navigate("Support") }}
                         />
 
                     </Drawer.Section>
 
                     <Drawer.Section title="preferences">
-                        <TouchableRipple onPress={()=> {toggleTheme()}}>
+                        <TouchableRipple onPress={() => { toggleTheme() }}>
                             <View style={styles.preference}>
                                 <Text>Dark Theme</Text>
                                 <View pointerEvents='none'>

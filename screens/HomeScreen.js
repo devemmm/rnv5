@@ -3,16 +3,21 @@ import { StatusBar } from 'expo-status-bar';
 import { View, Text, Button, StyleSheet } from 'react-native'
 
 
-const HomeScreen = ({navigation}) => {
-  return (
-    <View style={styles.container}>
-      <Text>HomeScreen</Text>
-      <Button 
-        title='Go to details screen'
-        onPress={()=>navigation.navigate("Details")}
-      />
-    </View>
-  )
+const HomeScreen = ({ navigation }) => {
+    return (
+        <View style={styles.container}>
+            <Text>HomeScreen</Text>
+            <Button
+                title='Go to details screen'
+                onPress={() => navigation.navigate("Details")}
+            />
+
+            <Button
+                title='Oppen Drawer navigator'
+                onPress={() => navigation.openDrawer()}
+            />
+        </View>
+    )
 }
 
 
